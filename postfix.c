@@ -4,7 +4,7 @@
 char stack[MAX_SIZE];
 int top = -1;
  
-///////////½ºÅÃ ÇÔ¼ö//////////
+///////////ìŠ¤íƒ í•¨ìˆ˜//////////
 void push(char item){
     top++;
     stack[top] = item;
@@ -17,17 +17,17 @@ char pop(){
 ////////////////////////////
  
 void postfix_trans(char *infix){
-    //infix -> postfix º¯È¯
+    //infix -> postfix ë³€í™˜
     int i;
  
     for(i = 0; infix[i] != '\0'; i++){
         switch(infix[i]){
-            //'('¸é ¹«Á¶°Ç push
+            //'('ë©´ ë¬´ì¡°ê±´ push
             case '(':
                 push(infix[i]);
                 break;
  
-            //¿¬»êÀÚ¸é stack[top]ÀÌ ¿ì¼±¼øÀ§°¡ ³·À»¶§±îÁö popÇÑ µÚ¿¡ push
+            //ì—°ì‚°ìë©´ stack[top]ì´ ìš°ì„ ìˆœìœ„ê°€ ë‚®ì„ë•Œê¹Œì§€ popí•œ ë’¤ì— push
             case '+':
             case '-':
                 while(top >= 0 && stack[top] != '('){
@@ -44,7 +44,7 @@ void postfix_trans(char *infix){
                 push(infix[i]);
                 break;
  
-            //')'¸é '('±îÁö push
+            //')'ë©´ '('ê¹Œì§€ push
             case ')':
                 while(stack[top] != '('){
                         printf("%c ", pop());
@@ -52,13 +52,13 @@ void postfix_trans(char *infix){
                 pop();
                 break;
  
-            //ÇÇ¿¬»êÀÚ¸é ±×³É Ãâ·Â
+            //í”¼ì—°ì‚°ìë©´ ê·¸ëƒ¥ ì¶œë ¥
             default :
                 printf("%c ", infix[i]);
         }
     }
  
-    //stackÀÌ ºô¶§±îÁö pop
+    //stackì´ ë¹Œë•Œê¹Œì§€ pop
     while(top >= 0)
         printf("%c ", pop());
  
@@ -69,7 +69,7 @@ int main(){
 	
     char infix[MAX_SIZE];
 	
-	printf("½ÄÀ» ÀÔ·ÂÇÏ½Ã¿À:");
+	printf("ì‹ì„ ì…ë ¥í•˜ì‹œì˜¤:");
 	scanf("%s",infix);//"A+B*(C-D)/E"
     
     postfix_trans(infix);
